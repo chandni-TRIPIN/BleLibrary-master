@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="issues">
+    <option name="index">
+      <map>
+        <entry key="/Dummy.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/spectrum/ble/BluetoothConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/spectrum/ble/BluetoothLeConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/spectrum/ble/BluetoothLeService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/spectrum/ble/ScanBuilder.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/spectrum/ble/blelibrary/DeviceControlActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/res/layout/gatt_services_characteristics.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/ReleaseNotes.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/onboarding/SignUpSecurityQuestionsActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/onboarding/login/LoginActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/onboarding/login/activity/LoginActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/onboarding/verificationcodegenerate/phoneverification/activity/PhoneNumberVerificationActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/utils/NavigationUtils.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/res/layout/activity_login.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/res/layout/activity_set_name.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/res/layout/activity_sign_up_security_questions.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/res/values/strings.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/res/values/styles.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/giga/build.gradle">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/giga/src/test/java/com/spectrum/giga/LoginActivityTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/giga/src/test/java/com/spectrum/giga/onboarding/AgreementPresenterTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
