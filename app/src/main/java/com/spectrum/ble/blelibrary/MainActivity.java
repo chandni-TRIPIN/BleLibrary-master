@@ -1,24 +1,21 @@
 package com.spectrum.ble.blelibrary;
 
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothGattService;
 import android.bluetooth.le.ScanResult;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.spectrum.ble.BluetoothConfig;
-import com.spectrum.ble.BluetoothLeConfig;
-import com.spectrum.ble.GattListener;
 import com.spectrum.ble.ScanBuilder;
 import com.spectrum.ble.ScanListener;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,15 +23,26 @@ public class MainActivity extends AppCompatActivity {
     private DeviceAdapter adapter;
     private BluetoothConfig mBluetoothConfig;
     private ScanBuilder mScanBuilder;
-
+    private Button mStartScan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recyclerview);
+        mStartScan = findViewById(R.id.start_scan);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         mBluetoothConfig = new BluetoothConfig(this);
         mScanBuilder = new ScanBuilder(this).setListener(mScanListener);
+        adapter = new DeviceAdapter(MainActivity.this);
+        recyclerView.setAdapter(adapter);
+
+        mStartScan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mScanBuilder.scanLeDevice(true);
+            }
+        });
     }
 
     @Override
@@ -47,11 +55,6 @@ public class MainActivity extends AppCompatActivity {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, 1);
         }
-
-        // Initializes list view adapter.
-        adapter = new DeviceAdapter(this);
-        recyclerView.setAdapter(adapter);
-        mScanBuilder.scanLeDevice(true);
     }
 
     @Override

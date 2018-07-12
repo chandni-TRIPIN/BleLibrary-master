@@ -313,9 +313,9 @@ public class DeviceControlActivity extends Activity {
                             enableIndication(mCharIdentify, true);
                     Log.v(TAG, "Enable Notification : " + statusNotifiaction);
 
-                    gattCharacteristic.setValue(new byte[]{(byte) 0x01});
-                    gattCharacteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-                    boolean status = mBluetoothLeConfig.mBluetoothLeService.writeCharacteristic(gattCharacteristic);
+                    mCharIdentify.setValue(new byte[]{(byte) 0x01});
+                    mCharIdentify.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
+                    boolean status = mBluetoothLeConfig.mBluetoothLeService.writeCharacteristic(mCharIdentify);
 
                     Log.v(TAG, "Write Char Status : " + status);
                 }
