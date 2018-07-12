@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DeviceControlActivity extends Activity {
-    private final static String TAG = DeviceControlActivity.class.getSimpleName();
+    private final static String TAG = "BLE";
 
     public static final String EXTRAS_DEVICE_NAME = "DEVICE_NAME";
     public static final String EXTRAS_DEVICE_ADDRESS = "DEVICE_ADDRESS";
@@ -118,7 +118,7 @@ public class DeviceControlActivity extends Activity {
             public void onClick(View v) {
                 mCharIdentify.setValue(new byte[]{(byte) 0x01});
                 boolean status = mBluetoothLeConfig.mBluetoothLeService.writeCharacteristic(mCharIdentify);
-                Log.v("BLE", "enableIndication state : " + status);
+                Log.v(TAG, "enableIndication state : " + status);
                 pairDevice(mBluetoothDevice);
             }
         });
@@ -128,7 +128,7 @@ public class DeviceControlActivity extends Activity {
             public void onClick(View v) {
                 mCharCommandTx.setValue(new byte[]{(byte) 0x60, (byte) 0x00});
                 boolean status = mBluetoothLeConfig.mBluetoothLeService.writeCharacteristic(mCharCommandTx);
-                Log.v("BLE", "mCharCommandTx  0x6000 state : " + status);
+                Log.v(TAG, "mCharCommandTx  0x6000 state : " + status);
             }
         });
     }
@@ -149,20 +149,20 @@ public class DeviceControlActivity extends Activity {
     private GattListener mGattListener = new GattListener() {
         @Override
         public void onDeviceConnected() {
-            Log.i("Test","Connected");
+            Log.i(TAG,"Connected");
             updateConnectionState("Connected");
         }
 
         @Override
         public void onDeviceDisconnected() {
-            Log.i("Test","Disonnected");
+            Log.i(TAG,"Disonnected");
             updateConnectionState("Disconnected");
             clearUI();
         }
 
         @Override
         public void onServiceDiscovered(List<BluetoothGattService> services) {
-            Log.i("Test","Services: " + services.toString());
+            Log.i(TAG,"Services Discovered");
             displayGattServices(services);
         }
 
@@ -171,8 +171,6 @@ public class DeviceControlActivity extends Activity {
             Log.i("Test","Characteristic: " + data);
             displayData(data);
         }
-
-
     };
 
     @Override
@@ -203,12 +201,12 @@ public class DeviceControlActivity extends Activity {
                 if (type == BluetoothDevice.PAIRING_VARIANT_PIN)
                 {
                     device.setPin(new byte[]{(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00});
-                    Log.v("BLE" , "Device Pair: " + type);
+                    Log.v(TAG , "Device Pair: " + type);
                     abortBroadcast();
                 }
                 else
                 {
-                    Log.v("BLE" , "Unexpected pairing type: " + type);
+                    Log.v(TAG , "Unexpected pairing type: " + type);
                 }
             }
         }
@@ -293,6 +291,7 @@ public class DeviceControlActivity extends Activity {
                     LIST_NAME, unknownServiceString);
             currentServiceData.put(LIST_UUID, uuid);
             gattServiceData.add(currentServiceData);
+            Log.v(TAG, "Service UUID : " + uuid);
 
             ArrayList<HashMap<String, String>> gattCharacteristicGroupData =
                     new ArrayList<>();
@@ -306,24 +305,29 @@ public class DeviceControlActivity extends Activity {
                 charas.add(gattCharacteristic);
                 HashMap<String, String> currentCharaData = new HashMap<String, String>();
                 uuid = gattCharacteristic.getUuid().toString();
+                Log.v(TAG, "Charactristics : " + uuid);
 
                 if(uuid.equalsIgnoreCase("4D050081-766C-42C4-8944-42BC98FC2D09")) {
                     mCharIdentify = gattCharacteristic;
+                    boolean statusNotifiaction = mBluetoothLeConfig.mBluetoothLeService.
+                            enableIndication(mCharIdentify, true);
+                    Log.v(TAG, "Enable Notification : " + statusNotifiaction);
+
                     gattCharacteristic.setValue(new byte[]{(byte) 0x01});
-//                    gattCharacteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-//                    boolean status = mBluetoothLeConfig.mBluetoothLeService.writeCharacteristic(gattCharacteristic);
-//
-//                    Log.v("BLE", "Write Char Status : " + status);
+                    gattCharacteristic.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
+                    boolean status = mBluetoothLeConfig.mBluetoothLeService.writeCharacteristic(gattCharacteristic);
+
+                    Log.v(TAG, "Write Char Status : " + status);
                 }
 
                 if(uuid.equalsIgnoreCase("4D050082-766C-42C4-8944-42BC98FC2D09")) {
                     mCharAuthentication = gattCharacteristic;
-                    Log.v("BLE", "Authentication char initialize");
+                    Log.v(TAG, "Authentication char initialize");
                 }
 
                 if(uuid.equalsIgnoreCase("4D050017-766C-42C4-8944-42BC98FC2D09")) {
                     mCharCommandTx = gattCharacteristic;
-                    Log.v("BLE", "CommandTx char initialize");
+                    Log.v(TAG, "CommandTx char initialize");
                 }
 
                 currentCharaData.put(
