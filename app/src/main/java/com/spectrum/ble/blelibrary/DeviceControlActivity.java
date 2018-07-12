@@ -118,8 +118,8 @@ public class DeviceControlActivity extends Activity {
             public void onClick(View v) {
                 mCharIdentify.setValue(new byte[]{(byte) 0x01});
                 boolean status = mBluetoothLeConfig.mBluetoothLeService.writeCharacteristic(mCharIdentify);
-                Log.v(TAG, "enableIndication state : " + status);
-                pairDevice(mBluetoothDevice);
+                Log.v(TAG, "Writing 01 to identify chat state : " + status);
+//                pairDevice(mBluetoothDevice);
             }
         });
 
@@ -309,15 +309,15 @@ public class DeviceControlActivity extends Activity {
 
                 if(uuid.equalsIgnoreCase("4D050081-766C-42C4-8944-42BC98FC2D09")) {
                     mCharIdentify = gattCharacteristic;
-                    boolean statusNotifiaction = mBluetoothLeConfig.mBluetoothLeService.
-                            enableIndication(mCharIdentify, true);
-                    Log.v(TAG, "Enable Notification : " + statusNotifiaction);
+//                    boolean statusNotifiaction = mBluetoothLeConfig.mBluetoothLeService.
+//                            enableIndication(mCharIdentify, true);
+//                    Log.v(TAG, "Enable Notification : " + statusNotifiaction);
 
-                    mCharIdentify.setValue(new byte[]{(byte) 0x01});
-                    mCharIdentify.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
-                    boolean status = mBluetoothLeConfig.mBluetoothLeService.writeCharacteristic(mCharIdentify);
+//                    mCharIdentify.setValue(new byte[]{(byte) 0x01});
+//                    mCharIdentify.setWriteType(BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT);
+//                    boolean status = mBluetoothLeConfig.mBluetoothLeService.writeCharacteristic(mCharIdentify);
 
-                    Log.v(TAG, "Write Char Status : " + status);
+//                    Log.v(TAG, "Write Char Status : " + status);
                 }
 
                 if(uuid.equalsIgnoreCase("4D050082-766C-42C4-8944-42BC98FC2D09")) {
