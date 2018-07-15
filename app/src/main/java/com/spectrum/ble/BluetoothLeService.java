@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattCallback;
 import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
 import android.bluetooth.BluetoothGattService;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothProfile;
@@ -16,6 +17,7 @@ import android.os.IBinder;
 import android.util.Log;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Service for managing connection and data communication with a GATT server hosted on a
@@ -76,6 +78,20 @@ public class BluetoothLeService extends Service {
         @Override
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
             if (status == BluetoothGatt.GATT_SUCCESS) {
+//                BluetoothGattCharacteristic characteristic =
+//                        mBluetoothGatt.getService(UUID.fromString(BleUUIDs.SERVICE_LOCKACTIVATION))
+//                                .getCharacteristic(UUID.fromString(BleUUIDs.CHAR_Authentication));
+//                if(characteristic != null) {
+//                    boolean statusCharAuth = mBluetoothGatt.setCharacteristicNotification(characteristic, true);
+//                    Log.w(TAG, "Authentication Service Enable  " + statusCharAuth);
+//
+//                    List<BluetoothGattDescriptor> bleDiscripters   =
+//                            characteristic.getDescriptors();
+//                    for(BluetoothGattDescriptor descriptor : bleDiscripters) {
+//                        Log.w(TAG, "Descriptor : " + descriptor.toString());
+//                    }
+//                }
+
                 broadcastUpdate(ACTION_GATT_SERVICES_DISCOVERED);
             } else {
                 Log.w(TAG, "onServicesDiscovered received: " + status);
@@ -91,6 +107,12 @@ public class BluetoothLeService extends Service {
 
             if (status == BluetoothGatt.GATT_SUCCESS) {
                 broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
+            } else  if(BluetoothGatt.GATT_SUCCESS == status) {
+                Log.v("BLE" , "onCharacteristicRead  : GATT_SUCCESS" );
+            }
+            else if(BluetoothGatt.GATT_INSUFFICIENT_AUTHENTICATION == status ||
+                    BluetoothGatt.GATT_INSUFFICIENT_ENCRYPTION == status) {
+                Log.v("BLE" , "onCharacteristicRead  : GATT_INSUFFICIENT_AUTHENTICATION" );
             }
         }
 
@@ -98,7 +120,23 @@ public class BluetoothLeService extends Service {
         public void onCharacteristicChanged(BluetoothGatt gatt,
                                             BluetoothGattCharacteristic characteristic) {
             Log.v("BLE" , "Service : onCharacteristicChanged" + characteristic.getUuid());
+            byte[] mValue = characteristic.getValue();
+            Log.v("BLE" , "Service : onCharacteristicChanged value " + mValue.toString());
+
             broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
+        }
+
+        @Override
+        public void onDescriptorRead(BluetoothGatt gatt, BluetoothGattDescriptor descriptor, int status) {
+            super.onDescriptorRead(gatt, descriptor, status);
+            Log.v("BLE" , "Service : onDescriptorRead status " + status);
+
+        }
+
+        @Override
+        public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
+            super.onCharacteristicWrite(gatt, characteristic, status);
+            Log.v("BLE" , "Service : onCharacteristicWrite " + characteristic.getUuid() + " Status : " + status);
         }
     };
 
@@ -245,19 +283,36 @@ public class BluetoothLeService extends Service {
      *
      * @param characteristic The characteristic to read from.
      */
-    public void readCharacteristic(BluetoothGattCharacteristic characteristic) {
+    public boolean readCharacteristic(BluetoothGattCharacteristic characteristic) {
         if (mBluetoothAdapter == null || mBluetoothGatt == null) {
             Log.w(TAG, "BluetoothAdapter not initialized");
-            return;
+            return false;
         }
-        mBluetoothGatt.readCharacteristic(characteristic);
+        boolean status = mBluetoothGatt.readCharacteristic(characteristic);
+        return status;
+    }
+
+    public boolean writeDescripter(BluetoothGattDescriptor descriptor) {
+
+        boolean status = mBluetoothGatt.writeDescriptor(descriptor);
+        return status;
     }
 
     public boolean writeCharacteristic(BluetoothGattCharacteristic characteristic) {
 
         boolean status = mBluetoothGatt.writeCharacteristic(characteristic);
+        boolean writeStatus = mBluetoothGatt.readCharacteristic(characteristic);
         return status;
     }
+
+    public boolean writeCart() {
+        BluetoothGattCharacteristic commandTx = mBluetoothGatt.getService(UUID.fromString("0000fff0-0000-1000-8000-00805f9b34fb")).getCharacteristic(UUID.fromString("0000fff4-0000-1000-8000-00805f9b34fb"));
+        commandTx.setValue(new byte[]{(byte) 0x60,(byte) 0x00});
+        commandTx.setWriteType(BluetoothGattCharacteristic.PERMISSION_WRITE_ENCRYPTED);
+        boolean status = mBluetoothGatt.writeCharacteristic(commandTx);
+        return status;
+    }
+
 
     public boolean enableIndication(BluetoothGattCharacteristic characteristic, boolean state) {
 

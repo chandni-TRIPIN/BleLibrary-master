@@ -8,6 +8,26 @@
             <set />
           </value>
         </entry>
+        <entry key="/a.dummy">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="/fragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/spectrum/ble/BleUtils/BleUUIDs.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/spectrum/ble/BleUtils/BleUtils.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/spectrum/ble/BluetoothConfig.java">
           <value>
             <set />
@@ -24,6 +44,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/app/src/main/java/com/spectrum/ble/ScanBuilder.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/src/main/java/com/spectrum/ble/blelibrary/DeviceAdapter.java">
           <value>
             <set />
           </value>
@@ -63,6 +88,16 @@
             <set />
           </value>
         </entry>
+        <entry key="F:/Speridian/Spectrum/BLE/Exapmles/BLEAuth/app/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/BLE/Exapmles/BLEAuth/app/src/main/java/bleauth/satinpod/com/bleauth/MainActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="F:/Speridian/Spectrum/BLE/repository_darwinandroid/sample/build.gradle">
           <value>
             <set />
@@ -74,6 +109,71 @@
           </value>
         </entry>
         <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/AndroidManifest.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/ble/util/BleUtil.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/ble/util/ScannedDevice.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/ble/util/adapter/DeviceAdapter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/ble/util/builders/BluetoothLeConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/ble/util/builders/ScanBuilder.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/ble/util/callbacks/GattListener.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/ble/util/callbacks/ScanListener.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/ble/util/service/BluetoothLeService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/homemgmt/HomeActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/homemgmt/HomesLockSettingFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/homemgmt/sidemenu/NavigationMenuHelper.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/locksetup/LockCreationIntroFragment.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/java/com/spectrum/kit/locksetup/searchlocks/SearchingLockFragment.java">
           <value>
             <set />
           </value>
@@ -114,6 +214,16 @@
           </value>
         </entry>
         <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/res/layout/activity_sign_up_security_questions.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/res/layout/ble_list_item.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="F:/Speridian/Spectrum/SourceCode/Ravi_Spectrum_Android/commonclasses/src/main/res/layout/fragment_searching_lock.xml">
           <value>
             <set />
           </value>
